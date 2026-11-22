@@ -1,0 +1,32 @@
+{
+  "status": "success",
+  "data": {
+    "orders": [
+      {
+        "uuid": "00000000-0000-4000-8000-000000000001",
+        "orderInfo": {
+          "orderPhase": "ACTIVE",
+          "storeInfo": {"name": "Example Kitchen"}
+        },
+        "activeOrderStatus": {
+          "title": "6:51 PM",
+          "subtitle": "Estimated arrival",
+          "currentProgress": 4,
+          "totalProgressSegments": 5,
+          "titleSummary": {"summary": {"text": "Almost here!"}}
+        },
+        "feedCards": [
+          {"courier": [{"title": "Sam"}]}
+        ],
+        "backgroundFeedCards": [
+          {
+            "mapEntity": [
+              {"type": "COURIER", "latitude": null, "longitude": null},
+              {"type": "EATER", "latitude": 51.52, "longitude": -0.13}
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

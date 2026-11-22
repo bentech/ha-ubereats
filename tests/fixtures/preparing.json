@@ -1,0 +1,14 @@
+{
+  "data": {
+    "orders": [
+      {
+        "orderUuid": "00000000-0000-4000-8000-000000000001",
+        "orderStatus": "PREPARING",
+        "store": {
+          "name": "Example Kitchen"
+        },
+        "estimatedDeliveryTime": 1893456000000
+      }
+    ]
+  }
+}

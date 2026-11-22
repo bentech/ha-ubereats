@@ -1,0 +1,12 @@
+{
+  "domain": "uber_eats",
+  "name": "Uber Eats",
+  "codeowners": ["@bentech"],
+  "config_flow": true,
+  "documentation": "https://github.com/bentech/ha-ubereats#readme",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/bentech/ha-ubereats/issues",
+  "requirements": [],
+  "version": "0.4.1"
+}

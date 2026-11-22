@@ -1,0 +1,69 @@
+type: vertical-stack
+cards:
+  - type: markdown
+    title: Uber Eats
+    entity_id:
+      - sensor.uber_eats_status
+      - sensor.uber_eats_latest_eta
+      - sensor.uber_eats_time_in_transit
+      - sensor.uber_eats_order_placed
+    content: |-
+      {% set order = config.entity_id[0] -%}
+      {% set status = states(order) -%}
+      {% set label = state_attr(order, 'status_detail') -%}
+      {% if status == 'stop_before_delivery' -%}
+      {% set stops = state_attr(order, 'stops_before_delivery') or 1 -%}
+      {% set label = stops ~ (' stop before your delivery' if stops == 1 else ' stops before your delivery') -%}
+      {% endif -%}
+      {% set restaurant = state_attr(order, 'restaurant') -%}
+      {% set eta = state_attr(order, 'estimated_delivery_time') -%}
+      {% if status == 'unavailable' or (status == 'unknown' and not label) -%}
+      **Tracking unavailable**
+      {%- else -%}
+      {% if restaurant %}
+      ### {{ restaurant }}
+      {% endif -%}
+      **{{ label or (status | replace('_', ' ') | capitalize) }}**
+      {% if eta %}
+      {% set arrival = as_datetime(eta, none) %}
+      Estimated arrival {{ as_local(arrival).strftime('%H:%M') if arrival else eta }}
+      {%- endif %}
+      {% set placed = as_datetime(states(config.entity_id[3]), none) %}
+      {% set original = as_datetime(state_attr(config.entity_id[1], 'original_latest_eta'), none) %}
+      {% set transit = states(config.entity_id[2]) | float(none) %}
+      {% if placed or original or transit is not none %}
+      {% if status == 'no_active_order' %}**Last order**{% endif %}
+
+      {% if placed %}- Order first seen {{ as_local(placed).strftime('%H:%M') }}
+      {% endif -%}
+      {% if original %}- Original latest ETA {{ as_local(original).strftime('%H:%M') }}
+      {% endif -%}
+      {% if transit is not none %}
+      {% set source = state_attr(config.entity_id[2], 'start_source') -%}
+      - {{ 'Since ready' if source == 'restaurant_ready' else 'Since pickup' }} {{ transit | round(0) | int }} min
+      {% endif %}
+      {% endif %}
+      {%- endif %}
+  - type: button
+    entity: button.uber_eats_refresh
+    name: Refresh order
+    icon: mdi:refresh
+    icon_height: 24px
+    tap_action:
+      action: perform-action
+      perform_action: button.press
+      target:
+        entity_id: button.uber_eats_refresh
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: device_tracker.uber_eats_courier
+        state_not:
+          - unavailable
+          - unknown
+    card:
+      type: map
+      entities:
+        - device_tracker.uber_eats_courier
+      default_zoom: 14
+      hours_to_show: 0

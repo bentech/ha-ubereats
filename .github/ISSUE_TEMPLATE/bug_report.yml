@@ -1,0 +1,28 @@
+name: Report a bug
+description: Report a problem with Uber Eats order tracking.
+body:
+  - type: input
+    id: home_assistant_version
+    attributes:
+      label: Home Assistant version
+    validations:
+      required: true
+  - type: input
+    id: integration_version
+    attributes:
+      label: Uber Eats integration version
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the tracking stage, the expected result, and what Home Assistant showed.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Remove cookies, street addresses, order IDs, and courier locations before sharing logs.
+      render: text

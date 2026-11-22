@@ -1,0 +1,31 @@
+{
+  "status": "success",
+  "data": {
+    "orders": [
+      {
+        "uuid": "00000000-0000-4000-8000-000000000001",
+        "orderInfo": {
+          "orderPhase": "ACTIVE",
+          "storeInfo": {"name": "Example Kitchen"}
+        },
+        "activeOrderStatus": {
+          "title": "6:49 PM",
+          "subtitle": "Estimated arrival",
+          "currentProgress": 3,
+          "totalProgressSegments": 5
+        },
+        "feedCards": [
+          {
+            "status": {
+              "titleSummary": {"summary": {"text": "Heading your way..."}},
+              "timelineSummary": "Your order is on the move! Sam has one stop along the way."
+            }
+          }
+        ],
+        "backgroundFeedCards": [
+          {"mapEntity": [{"type": "EATER", "latitude": 51.52, "longitude": -0.13}]}
+        ]
+      }
+    ]
+  }
+}

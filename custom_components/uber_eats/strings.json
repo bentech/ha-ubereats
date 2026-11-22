@@ -1,0 +1,30 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect Uber Eats order tracking",
+        "description": "Enter the Cookie request header from your signed-in Uber Eats browser. The integration finds your active order automatically.",
+        "data": {
+          "cookie": "Cookie header",
+          "timezone": "Timezone",
+          "locale": "Locale code"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reconnect to Uber Eats",
+        "description": "Paste a fresh Cookie request header from your signed-in browser.",
+        "data": {
+          "cookie": "Cookie header"
+        }
+      }
+    },
+    "error": {
+      "invalid_timezone": "Enter a valid IANA timezone, such as Europe/London.",
+      "invalid_cookie": "Enter the Cookie request header from your browser."
+    },
+    "abort": {
+      "already_configured": "Active order tracking is already configured.",
+      "reauth_successful": "The Uber Eats session was updated."
+    }
+  }
+}

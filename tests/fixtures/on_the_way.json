@@ -1,0 +1,23 @@
+{
+  "data": {
+    "orders": [
+      {
+        "uuid": "00000000-0000-4000-8000-000000000001",
+        "state": "EN_ROUTE",
+        "restaurant": {
+          "name": "Example Kitchen"
+        },
+        "eaterTrip": {
+          "eta": "2030-01-01T00:00:00Z",
+          "courier": {
+            "firstName": "Sam",
+            "location": {
+              "latitude": "51.5",
+              "longitude": "-0.1"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
